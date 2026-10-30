@@ -10,25 +10,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Super Silla</td>
-      <td>Super Marca</td>
-      <td>$199.99</td>
-      <td>Oficina</td>
-      <td>
-        <button class="btn btn-primary btn-sm">Editar</button>
-        <button class="btn btn-danger btn-sm">Eliminar</button>
+    <tr *ngIf="sillas().length === 0">
+      <td colspan="6" class="text-center">No hay sillas disponibles</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>$299.99</td>
-      <td>Residencia</td>
+    <tr *ngFor="let silla of sillas();">
+      <th scope="row">{{ silla.id }}</th>
+      <td>{{ silla.nombre }}</td>
+      <td>{{ silla.marca }}</td>
+      <td>${{ silla.precio }}</td>
+      <td>{{ silla.uso.nombre }}</td>
       <td>
         <button class="btn btn-primary btn-sm">Editar</button>
-        <button class="btn btn-danger btn-sm">Eliminar</button>
+        <button class="btn btn-danger btn-sm" (click)="eliminarSilla(silla)">Eliminar</button>
     </tr>
   </tbody>
 </table>
+
+<button class="btn btn-success" (click)="getSillas()">Actualizar</button>
+<h1>{{ titulo }}</h1>
+<input class="form-control" [(ngModel)]="titulo" />

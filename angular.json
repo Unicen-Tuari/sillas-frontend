@@ -52,8 +52,11 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
+         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "sillas-frontend:build:production"
